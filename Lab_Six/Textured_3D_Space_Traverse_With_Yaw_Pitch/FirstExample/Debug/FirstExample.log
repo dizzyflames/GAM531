@@ -1,0 +1,10 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (FirstExample.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  3D_World_Traversal.cpp
+C:\Users\jason\Desktop\Semester 5\GAM\Lab_Six\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(213,46): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jason\Desktop\Semester 5\GAM\Lab_Six\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(316,8): warning C4101: 'width1': unreferenced local variable
+C:\Users\jason\Desktop\Semester 5\GAM\Lab_Six\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(319,16): warning C4101: 'height2': unreferenced local variable
+C:\Users\jason\Desktop\Semester 5\GAM\Lab_Six\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(319,8): warning C4101: 'width2': unreferenced local variable
+C:\Users\jason\Desktop\Semester 5\GAM\Lab_Six\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(316,16): warning C4101: 'height1': unreferenced local variable
+C:\Users\jason\Desktop\Semester 5\GAM\Lab_Six\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(440,14): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jason\Desktop\Semester 5\GAM\Lab_Six\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(543,15): warning C4305: '+=': truncation from 'double' to 'GLfloat'
+  FirstExample.vcxproj -> C:\Users\jason\Desktop\Semester 5\GAM\Lab_Six\Textured_3D_Space_Traverse_With_Yaw_Pitch\Debug\3D_World.exe

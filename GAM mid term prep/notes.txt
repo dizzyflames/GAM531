@@ -1,0 +1,258 @@
+Lab 1: rotating triangles
+
+display: drawing two triangles
+	glClear(GL_COLOR_BUFFER_BIT);	//Clears the screen and ready to draw
+
+
+	//Building our transformation matrices using glm library
+
+	//NOTE: 
+	//THE ORDER OF TRANSFOEMATION DOES MATTER. A rotation followed by a translation- 
+	//might return a different outcome than a translation followed by a rotation.
+
+
+
+	//We'd like to translate our geometry 0.5 units along the X-axis
+	glm::mat4 model_view_matrix = model_view_matrix = glm::translate(glm::mat4(1.0), glm::vec3(0.5, 0.0, 0.0));
+
+	//Next, we'd like to rtate the translated geometry about Z-axis
+	model_view_matrix = glm::rotate(model_view_matrix, alpha, glm::vec3(0, 0, 1));
+
+
+	//Finally, we'll shrink the geometry to 50% of the original dimensions in X, Y directions
+	model_view_matrix = glm::scale(model_view_matrix, glm::vec3(0.5, 0.5, 1.0));
+
+	//Passing the built model-view_matrix to the vertex shader. Recall: variable 'location' contains the memory address of the model_view
+	//matrix that is used in our vertex shader.
+	glUniformMatrix4fv(location, 1, GL_FALSE, &model_view_matrix[0][0]);
+
+	glDrawArrays(GL_TRIANGLES, 0, 3);	//Connect the vertices using "GL_TRIANGLES" modes.
+										//Read more about draw modes here:
+										//https://www.glprogramming.com/red/chapter02.html
+										//https://www.khronos.org/registry/OpenGL-Refpages/es2.0/xhtml/glDrawArrays.xml
+
+
+	glm::mat4 model_view_matrix2 = glm::translate(glm::mat4(1.0), glm::vec3(-0.5, 0.0, 0.0));
+
+	//Next, we'd like to rtate the translated geometry about Z-axis
+	model_view_matrix2 = glm::rotate(model_view_matrix2, alpha, glm::vec3(0, 0, -1));
+
+
+	//Finally, we'll shrink the geometry to 50% of the original dimensions in X, Y directions
+	model_view_matrix2 = glm::scale(model_view_matrix2, glm::vec3(0.5, 0.5, 1.0));
+
+	glUniformMatrix4fv(location, 1, GL_FALSE, &model_view_matrix2[0][0]);
+
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+
+	glFlush();							//Flush the rendered contents on the screen.
+
+idle: rotating two triangles
+	float omega = 1;	//let omega to be the angular speed
+	float timeSinceStart = glutGet(GLUT_ELAPSED_TIME) / 1000.f;		//Retreives the time in seconds
+	alpha = omega * timeSinceStart;		//We use Theta = omega * time to calculate the amount of rotation of the geometry in this frame
+
+	glutPostRedisplay();	//This is the explicit call to display function: display()
+	
+	
+Lab 2: rotating cube
+
+display: control camera position
+	glClear(GL_COLOR_BUFFER_BIT);	//Clears the screen and ready to draw
+
+	//Clearing the depth buffer
+	glClear(GL_DEPTH_BUFFER_BIT);
+
+	//Building our transformation matrices using glm library
+
+	//NOTE: 
+	//THE ORDER OF TRANSFOEMATION DOES MATTER. A rotation followed by a translation- 
+	//might return a different outcome than a translation followed by a rotation.
+
+	//We'd like to translate our geometry 0.5 units along the X-axis
+	glm::mat4 model_view_matrix = glm::mat4(1.0);
+
+
+	//Passing the built model-view_matrix to the vertex shader. Recall: variable 'location' contains the memory address of the model_view
+	//matrix that is used in our vertex shader.
+	glUniformMatrix4fv(model_view_matrix_location, 1, GL_FALSE, &model_view_matrix[0][0]);
+
+
+
+	//And now, building our camera matrix using glm library.
+	//More details about camera canbe found here: https://learnopengl.com/Getting-started/Camera
+	//Setting up my camera in the scene: location, direction and up_vector.
+	//We use glm to generate the matrix representing the state of my camera (location, direction, up_vector).
+	//The first parameter is the vector representing the location of the camera corresponding to world-coordinate-system.
+	//The second parameter is the point in space that the camera is looking at.
+	//The third parameter is the up-vector of the camera.
+	cam_pos.x = 1 * cos(alpha);
+	cam_pos.y = 1 * sin(alpha);
+
+	glm::mat4 camera_mat = glm::lookAt(cam_pos, cam_dir, cam_up_vector);
+	glUniformMatrix4fv(camera_matrix_location, 1, GL_FALSE, &camera_mat[0][0]);
+
+
+
+	//Finally, developing our projection matrix using glm library
+	glm::mat4 projection_mat = glm::frustum(-0.1, +0.1, -0.1, +0.1, 0.01, 10.0);
+	glUniformMatrix4fv(projection_matrix_location, 1, GL_FALSE, &projection_mat[0][0]);
+
+
+	glDrawArrays(GL_TRIANGLES, 0, NumVertices);	//Connect the vertices using "GL_TRIANGLES" modes.
+										//Read more about draw modes here:
+										//https://www.glprogramming.com/red/chapter02.html
+										//https://www.khronos.org/registry/OpenGL-Refpages/es2.0/xhtml/glDrawArrays.xml
+
+
+
+
+	glFlush();							//Flush the rendered contents on the screen.
+	
+idle: control speed of rotation
+	alpha += 0.0005;
+	glutPostRedisplay();
+	
+Lab3:  traversing world
+
+keyboard: move and pressing T/P changes perspective
+	if (cam_mode)
+	{
+		if (key == 'w')
+		{
+			cam_pos += up_vector * travel_speed * ((float)deltaTime) / 1000.0f;
+		}
+		if (key == 's')
+		{
+			cam_pos -= up_vector * travel_speed * ((float)deltaTime) / 1000.0f;
+		}
+		if (key == 'a')
+		{
+			//Moving camera along opposit direction of side vector
+			cam_pos += glm::cross(up_vector, forward_vector) * travel_speed * ((float)deltaTime) / 1000.0f;
+		}
+		if (key == 'd')
+		{
+			//Moving camera along side vector
+			cam_pos -= glm::cross(up_vector, forward_vector) * travel_speed * ((float)deltaTime) / 1000.0f;
+		}
+		if (key == 'p')
+		{
+			cam_mode = 0;
+			height = 0.8f;
+			look_level = height;
+			up_vector = glm::rotate(up_vector, -1.57f, side_vector);
+			forward_vector = glm::rotate(forward_vector, -1.57f, side_vector);
+			cam_pos = glm::vec3(cam_pos.x, cam_pos.y, height);
+		}
+	}
+	else {
+
+		if (key == 'a')
+		{
+			//Moving camera along opposit direction of side vector
+			cam_pos += glm::cross(up_vector, forward_vector) * travel_speed * ((float)deltaTime) / 1000.0f;
+		}
+		if (key == 'd')
+		{
+			//Moving camera along side vector
+			cam_pos -= glm::cross(up_vector, forward_vector) * travel_speed * ((float)deltaTime) / 1000.0f;
+		}
+		if (key == 'w')
+		{
+			//Moving camera along forward vector. To be more realistic, we use X=V.T equation in physics
+			cam_pos += forward_vector * travel_speed * ((float)deltaTime) / 1000.0f;
+		}
+		if (key == 's')
+		{
+			//Moving camera along backward vector. To be more realistic, we use X=V.T equation in physics
+			cam_pos -= forward_vector * travel_speed * ((float)deltaTime) / 1000.0f;
+		}
+		if (key == 't')
+		{
+			cam_mode = 1;
+			height = 30.0;
+			look_level = ground;
+			up_vector = glm::rotate(up_vector, 1.57f, side_vector);
+			forward_vector = glm::rotate(forward_vector, 1.57f, side_vector);
+			cam_pos = glm::vec3(cam_pos.x, cam_pos.y, height);
+		}
+	}
+
+Lab 4: lifelike movement, B turns camera around, and C crouches, shift runs
+
+keyboard: // everything
+	if (key == 'a')
+	{
+		//Moving camera along opposit direction of side vector
+		cam_pos += side_vector * travel_speed * ((float)deltaTime) / 1000.0f;
+
+	}
+	if (key == 'd')
+	{
+		//Moving camera along side vector
+		cam_pos -= side_vector * travel_speed * ((float)deltaTime) / 1000.0f;
+	}
+	if (key == 'w')
+	{
+		//Moving camera along forward vector. To be more realistic, we use X=V.T equation in physics
+		cam_pos += forward_vector * travel_speed * ((float)deltaTime) / 1000.0f;
+		cam_pos.z += 0.05 * sin(4 * theta);
+		theta += 0.1;
+
+	}
+	if (key == 's')
+	{
+		//Moving camera along backward (negative forward) vector. To be more realistic, we use X=V.T equation in physics
+		cam_pos -= forward_vector * travel_speed * ((float)deltaTime) / 1000.0f;
+		cam_pos.z += 0.05 * sin(2 * theta);
+		theta += 0.1;
+	}
+	if (key == 'b') {
+			//The value 100 is used to slow down the rotation of head toward back.
+			//We will turn the head back in 100 steps as folows:
+			//The total rotation angle is 180 degrees which is equal to PI in radian (3.141).
+			for (int a = 0; a < 100; a++) {
+			looking_dir_vector = glm::rotate(looking_dir_vector, 3.141f/100.0f, unit_z_vector);
+			up_vector = glm::rotate(up_vector, 3.141f / 100.0f, unit_z_vector);
+			display();
+		}
+	}
+	if (key == 'c') {
+		if (!crouch) {
+			cam_pos.z -= 0.5f;
+			crouch = true;
+		}
+		else {
+			cam_pos.z += 0.5f;
+			crouch = false;
+		}
+	}
+
+	if (glutGetModifiers() == GLUT_ACTIVE_SHIFT) {
+		travel_speed *= 0.5;
+	}
+	if (key == 'z') {
+		travel_speed *= 0.5;
+		keyPressed = true;
+	}
+	
+texture mapping: 
+	GLint width1, height1;
+	unsigned char* textureData1 = SOIL_load_image("grass.png", &width1, &height1, 0, SOIL_LOAD_RGB);
+
+	GLint width2, height2;
+	unsigned char* textureData2 = SOIL_load_image("apple.png", &width2, &height2, 0, SOIL_LOAD_RGB);
+	
+	glGenBuffers(2, Buffers);
+	glBindBuffer(GL_ARRAY_BUFFER, Buffers[0]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBindAttribLocation(program, 0, "vPosition");
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
+	glEnableVertexAttribArray(0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, Buffers[1]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(textureCoordinates), textureCoordinates, GL_STATIC_DRAW);
+	glBindAttribLocation(program, 1, "vTexCoord");
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
+	glEnableVertexAttribArray(1);

@@ -1,0 +1,6 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (FirstExample.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  3D_World_Traversal.cpp
+C:\Users\jason\Desktop\Final_Practical\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(98,46): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jason\Desktop\Final_Practical\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(146,2): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\jason\Desktop\Final_Practical\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(317,20): warning C4018: '<': signed/unsigned mismatch
+  FirstExample.vcxproj -> C:\Users\jason\Desktop\Final_Practical\Textured_3D_Space_Traverse_With_Yaw_Pitch\Debug\3D_World.exe

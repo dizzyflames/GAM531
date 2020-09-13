@@ -1,0 +1,12 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (FirstExample.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  3D_World_Traversal.cpp
+C:\Users\jason\Desktop\Lab_Seven_Eight\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(96,46): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jason\Desktop\Lab_Seven_Eight\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(144,2): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\jason\Desktop\Lab_Seven_Eight\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(429,22): warning C4305: '+=': truncation from 'double' to 'GLfloat'
+C:\Users\jason\Desktop\Lab_Seven_Eight\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(433,18): warning C4305: '=': truncation from 'double' to 'T'
+C:\Users\jason\Desktop\Lab_Seven_Eight\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(433,18): warning C4305:         with
+C:\Users\jason\Desktop\Lab_Seven_Eight\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(433,18): warning C4305:         [
+C:\Users\jason\Desktop\Lab_Seven_Eight\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(433,18): warning C4305:             T=float
+C:\Users\jason\Desktop\Lab_Seven_Eight\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(433,18): warning C4305:         ]
+C:\Users\jason\Desktop\Lab_Seven_Eight\Textured_3D_Space_Traverse_With_Yaw_Pitch\FirstExample\3D_World_Traversal.cpp(436,12): warning C4305: '+=': truncation from 'double' to 'float'
+  FirstExample.vcxproj -> C:\Users\jason\Desktop\Lab_Seven_Eight\Textured_3D_Space_Traverse_With_Yaw_Pitch\Debug\3D_World.exe

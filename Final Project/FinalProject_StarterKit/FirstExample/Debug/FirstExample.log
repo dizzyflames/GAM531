@@ -1,0 +1,9 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (FirstExample.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  3D_World_Traversal.cpp
+C:\Users\jason\Desktop\Semester 5\GAM\Final Project\FinalProject_StarterKit\FirstExample\3D_World_Traversal.cpp(100,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jason\Desktop\Semester 5\GAM\Final Project\FinalProject_StarterKit\FirstExample\3D_World_Traversal.cpp(101,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jason\Desktop\Semester 5\GAM\Final Project\FinalProject_StarterKit\FirstExample\3D_World_Traversal.cpp(143,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jason\Desktop\Semester 5\GAM\Final Project\FinalProject_StarterKit\FirstExample\3D_World_Traversal.cpp(156,32): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jason\Desktop\Semester 5\GAM\Final Project\FinalProject_StarterKit\FirstExample\3D_World_Traversal.cpp(208,46): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jason\Desktop\Semester 5\GAM\Final Project\FinalProject_StarterKit\FirstExample\3D_World_Traversal.cpp(256,2): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+  FirstExample.vcxproj -> C:\Users\jason\Desktop\Semester 5\GAM\Final Project\FinalProject_StarterKit\Debug\3D_World.exe

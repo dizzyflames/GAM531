@@ -1,0 +1,17 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (FirstExample.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  3D_World_Traversal.cpp
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(96,46): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(127,2): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(246,37): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(246,37): warning C4244:         with
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(246,37): warning C4244:         [
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(246,37): warning C4244:             T=float
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(246,37): warning C4244:         ]
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(247,15): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(254,37): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(254,37): warning C4244:         with
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(254,37): warning C4244:         [
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(254,37): warning C4244:             T=float
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(254,37): warning C4244:         ]
+C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\FirstExample\3D_World_Traversal.cpp(255,15): warning C4305: '+=': truncation from 'double' to 'float'
+  FirstExample.vcxproj -> C:\Users\jason\Desktop\GAM mid term prep\Solution For Lab Four\Debug\3D_World.exe
